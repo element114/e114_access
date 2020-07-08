@@ -132,39 +132,6 @@ impl core::str::FromStr for ApiRole {
     }
 }
 
-// fn extract_roles(claims: &ApiClaims) -> Vec<String> {
-//     let mut res = vec![];
-//     for r in &claims.roles {
-//         let parts: Vec<&str> = r.splitn(2, '/').collect();
-//         let aud_idx =
-//             if let Some(idx) = parts.get(0) { idx.parse::<usize>().unwrap_or_default() } else { 0 };
-//         if let Some(aud) = claims.audiences.get(aud_idx) {
-//             let role = r.replacen(&aud_idx.to_string(), "", 1);
-//             let role = role.trim_start_matches(':');
-//             res.extend(match role {
-//                 // "editor" => build_granular_roles(aud, EDITOR_DOCS),
-//                 // "sales" => build_granular_roles(aud, SALES_DOCS),
-//                 // "manager" => build_granular_roles(aud, MANAGER_DOCS),
-//                 "member" => build_granular_roles_read_only(aud),
-//                 _ => vec![],
-//             });
-//         }
-
-//         // granular role pass through
-//         if r.starts_with("list:")
-//             || r.starts_with("fetch:")
-//             || r.starts_with("create:")
-//             || r.starts_with("update:")
-//             || r.starts_with("replace:")
-//             || r.starts_with("delete:")
-//         {
-//             res.push(r.to_owned());
-//         }
-//     }
-//     // debug!("extract_roles: {:?}", res);
-//     res
-// }
-
 #[cfg(test)]
 mod tests {
     use super::{ApiClaims, ApiRole};

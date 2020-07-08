@@ -18,12 +18,9 @@ e114_access = { version = "0.1", features = ["jsonschema"] }
 Adds `#[derive(JsonSchema)]` to certain types and the `schemars` dependency.
 
 ```toml
-e114_access = { version = "0.1", features = ["actix_web"] }
+e114_access = { version = "0.1", features = ["validate"] }
 ```
-
-```toml
-e114_access = { version = "0.1", features = ["hyper_body"] }
-```
+Enables <keats/validator> and `contracts` checks.
 
 ## Generate new PEMs
 These are used for token signing and validation.
