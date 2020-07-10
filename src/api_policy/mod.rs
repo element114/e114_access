@@ -85,8 +85,11 @@ impl ApiClaims {
         // let roles = extract_roles(claims);
         let roles = &self.roles;
         if let Some(perm) = roles.iter().find(|role| {
-            let r = url::Url::parse(role).unwrap();
-            r.scheme().eq(full_key.scheme()) && r.path().eq(full_key.path())
+            if let Ok(r) = url::Url::parse(role) {
+                r.scheme().eq(full_key.scheme()) && r.path().eq(full_key.path())
+            } else {
+                false
+            }
         }) {
             Access { granted: true, message: format!("Access | granted by key {}", perm) }
         } else {
