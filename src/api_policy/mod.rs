@@ -5,7 +5,6 @@ pub use ops::*;
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 #[cfg(feature = "validate")]
-use validator::Validate;
 
 #[derive(Debug, Serialize, Deserialize, Default)]
 pub struct List {
